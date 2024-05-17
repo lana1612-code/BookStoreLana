@@ -1,0 +1,39 @@
+﻿@model List<Category>
+
+<h1>ALL Categories  !!</h1>
+        @if(!Model.Any()){
+    
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                        <h1> No Data</h1>
+                    </div>
+        
+        }
+        else{
+        @foreach (var item in @Model)
+        {
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 10px">ID</th>
+                    <th>Name</th>
+                    <th>Create Time</th>
+                    <th>Update Time</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <span class="badge bg-danger">@item.CreatedDate</span>
+                </td>
+                <td><span class="badge bg-danger">@item.LastUpdate</span></td>
+            </tr>
+            </tbody>
+        </table>
+        }
+        }
+
