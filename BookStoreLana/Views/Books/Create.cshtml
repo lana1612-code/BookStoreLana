@@ -1,0 +1,56 @@
+﻿@using BookStoreLana.ViewModel
+@model BookFormVM
+@section Title {
+Books
+}
+@section SubTitle {
+	Create
+}
+
+
+<form asp-controller="Books" asp-action="Create" enctype="multipart/form-data">
+	<div class="card-body">
+		<div class="form-group">
+			<label asp-for="Title"></label>
+			<input type="text" class="form-control" asp-for="Title" />
+			<span asp-validation-for="Title" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="AutherId"></label>
+			<select type="text" class="form-control" asp-for="AutherId" asp-items="@Model.Authers">
+
+			</select>
+		</div>
+		<div class="form-group">
+			<label asp-for="Publisher"></label>
+			<input type="text" class="form-control" asp-for="Publisher" />
+			<span asp-validation-for="Publisher" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="publishDate"></label>
+			<input type="date" class="form-control" asp-for="publishDate" /> 
+			<span asp-validation-for="publishDate" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="ImageUrl"></label>
+			<input type="file" class="form-control" asp-for="ImageUrl" />
+			<span asp-validation-for="ImageUrl" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="SelectedCategories"></label>
+			<select type="text" class="form-control" asp-for="SelectedCategories" asp-items="@Model.Categories">
+			</select>
+		</div>
+		<div class="form-group">
+			<label asp-for="Description"></label>
+			<textarea asp-for="Description" class="form-control"></textarea>
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+	</div>
+	
+	<div class="card-footer">
+		<button type="submit" class="btn btn-primary">
+			Add
+		</button>
+	</div>
+</form>
