@@ -1,0 +1,36 @@
+﻿@using BookStoreLana.ViewModel
+@model CategoryVM
+@section Title {
+Category
+}
+@section SubTitle {
+Detail
+}
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 10px">ID</th>
+                <th>Name</th>
+                <th>Created at</th>
+                <th>Upadte at</th>
+
+            </tr>
+        </thead>
+        <tbody>
+           
+                <tr>
+                    <td>@Model.Id</td>
+                    <td>@Model.Name</td>
+                    <td>@Model.CreatedDate</td>
+                    <td>@Model.LastUpdate</td>
+
+                </tr>
+            
+        </tbody>
+    </table>
+
+
+
