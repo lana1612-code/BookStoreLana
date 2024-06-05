@@ -1,8 +1,59 @@
 ﻿@using BookStoreLana.ViewModel
-@model BookFormVM
+@model List<BookVM>
 @section Title {
 Books
 }
 @section SubTitle {
-	Create
+	Show
+}
+@section Button {
+    <a asp-controller="Books" asp-action="Create" class="btn btn-primary">Create</a>
+}
+@if (!Model.Any())
+{
+
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+        <h1> No Data</h1>
+    </div>
+
+}
+else
+{
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 10px">ID</th>
+                <th>Title</th>
+                <th>Auther</th>
+                <th>Publisher</th>
+                <th>publishDate</th>
+                <th>Image</th>
+                <th>Categories</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Title</td>
+                    <td>@item.Auther</td>
+                    <td>@item.Publisher</td>
+                    <td width=" 60px">@item.publishDate</td>
+                    <td><img src="~/img/books/@item.ImageUrl" width="50px"/></td>
+                    <td>@string.Join(", ",item.Categories)</td>
+                    <td>
+                        <a asp-controller="Categories" asp-action="Edite" asp-route-id="@item.Id" class="btn btn-outline-success">Edite <i class="fas fa-edit"></i></a>
+                        <a asp-controller="Categories" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-outline-primary">Detail <i class="fas fa-info-circle"></i></a>
+                        <a data-id="@item.Id" class="btn btn-outline-info js-delete">Delete <i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
